@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<h2>Waiting for files</h2>
+
+<p id="demo"></p>
+
+<script>
+function show(value) {
+  document.getElementById("demo").innerHTML = value;
+}
+
+function getFile(myCallback) {
+  let req = new XMLHttpRequest();
+  req.open('GET', "tictactoe.html");
+  req.onload = function() {
+    if (req.status == 200) {
+      myCallback(this.responseText);
+    } else {
+      myCallback("Error: " + req.status);
+    }
+  }
+  req.send();
+}
+
+getFile(show); 
+</script>
+
+</body>
+</html>
